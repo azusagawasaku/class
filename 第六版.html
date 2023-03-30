@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 10px;
+			text-align: center;
+		}
+        body{
+            background-color: #f2f2f2;
+        }
+        h1{
+            text-align: center;
+            font-size: 36px;
+            margin-top: 50px;
+        }
+        table{
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        th{
+            background-color: #4CAF50;
+            color: white;
+            font-size: 24px;
+        }
+        td{
+            font-size: 20px;
+        }
+                .highlight{
+            background-color: pink;
+            
+        }
+	</style>
+</head>
+<body>
+	<h1>实时动态课程表</h1>
+	<table>
+		<tr>
+			<th>节次</th>
+			<th>周一</th>
+			<th>周二</th>
+			<th>周三</th>
+			<th>周四</th>
+			<th>周五</th>
+		</tr>
+		<tr>
+			<td>第一二节<br>8:00-9:30</td>
+			<td>数据统计与分析</td>
+			<td></td>
+			<td>英语写作2</td>
+			<td>国际商务礼仪</td>
+			<td>客户关系管理</td>
+		</tr>
+		<tr>
+			<td>第三四节<br>9:40-11:10</td>
+			<td>电子商务基础</td>
+			<td></td>
+			<td>翻译技巧2</td>
+			<td>综合英语4</td>
+			<td>综合英语4</td>
+		</tr>
+		<tr>
+			<td>第六节<br>13:10-13:50</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>第七八节<br>14:00-15:30</td>
+			<td></td>
+			<td>毛概</td>
+			<td></td>
+			<td>形式与政策4</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>第九十节<br>15:40-7:10</td>
+			<td></td>
+			<td></td>
+			<td>应用英语视听说2</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+    <script>
+    var d = new Date();
+    var n = d.getDay();
+    var day = d.getDay()
+    var minute =d.getMinutes()
+
+    const now = new Date();
+    const hour = now.getHours();
+    let nn;
+    if (hour >= 8 && hour <= 9 && now.getMinutes() >= 0 && now.getMinutes() <= 30) {
+    nn = 1;
+    } else if (hour >= 9 && hour <= 11 && now.getMinutes() >= 40) {
+    nn = 2;
+    } else if (hour === 13 && now.getMinutes() >= 10 || hour === 14 && now.getMinutes() <= 30) {
+    nn = 3;
+    } else if (hour === 14 && now.getMinutes() >= 0 || hour === 15 && now.getMinutes() <= 30) {
+    nn = 4;
+    } else {
+    nn = 5;
+    }
+
+
+    let currentClass = document.querySelectorAll("tr")[nn].querySelectorAll("td")[day];
+
+    // console.log(nn);
+
+    currentClass.classList.add("highlight");
+
+
+    setInterval(function() {
+			updateTable();
+		}, 1000);
+
+
+
+    </script>
+</body>
+</html>
